@@ -14,7 +14,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Set Navigation Bar style
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"menu-bar"] forBarMetrics: UIBarMetricsDefault];
+    CGRect rect = CGRectMake(0.0f, 0.0f, ScreenWidth, 44.0f);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetFillColorWithColor(context, [[UIColor colorWithWhite: 1.0 alpha:0.5f] CGColor]);
+    CGContextFillRect(context, rect);
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics: UIBarMetricsDefault];
     [[UINavigationBar appearance] setTintColor: [UIColor clearColor]];
     [[UINavigationBar appearance] setTitleVerticalPositionAdjustment: 1.0f forBarMetrics: UIBarMetricsDefault];
     

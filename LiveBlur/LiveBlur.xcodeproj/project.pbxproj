@@ -17,8 +17,6 @@
 		0247C423176E02860029BA47 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0247C422176E02860029BA47 /* Default@2x.png */; };
 		0247C425176E02860029BA47 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0247C424176E02860029BA47 /* Default-568h@2x.png */; };
 		0247C42C176E02A00029BA47 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0247C42B176E02A00029BA47 /* Accelerate.framework */; };
-		0247C43C176E02CF0029BA47 /* menu-bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0247C432176E02CF0029BA47 /* menu-bar.png */; };
-		0247C43D176E02CF0029BA47 /* menu-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0247C433176E02CF0029BA47 /* menu-bar@2x.png */; };
 		0247C444176E03530029BA47 /* DKMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0247C443176E03530029BA47 /* DKMainViewController.m */; };
 		0247C447176E04560029BA47 /* DKLiveBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0247C446176E04560029BA47 /* DKLiveBlurView.m */; };
 		0247C44B176E15C00029BA47 /* bg1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0247C44A176E15C00029BA47 /* bg1.jpg */; };
@@ -39,8 +37,6 @@
 		0247C422176E02860029BA47 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0247C424176E02860029BA47 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0247C42B176E02A00029BA47 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		0247C432176E02CF0029BA47 /* menu-bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bar.png"; sourceTree = "<group>"; };
-		0247C433176E02CF0029BA47 /* menu-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu-bar@2x.png"; sourceTree = "<group>"; };
 		0247C442176E03530029BA47 /* DKMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKMainViewController.h; sourceTree = "<group>"; };
 		0247C443176E03530029BA47 /* DKMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKMainViewController.m; sourceTree = "<group>"; };
 		0247C445176E04560029BA47 /* DKLiveBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKLiveBlurView.h; sourceTree = "<group>"; };
@@ -123,8 +119,6 @@
 		0247C42D176E02CF0029BA47 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				0247C432176E02CF0029BA47 /* menu-bar.png */,
-				0247C433176E02CF0029BA47 /* menu-bar@2x.png */,
 				0247C44A176E15C00029BA47 /* bg1.jpg */,
 			);
 			name = Images;
@@ -187,8 +181,6 @@
 				0247C421176E02860029BA47 /* Default.png in Resources */,
 				0247C423176E02860029BA47 /* Default@2x.png in Resources */,
 				0247C425176E02860029BA47 /* Default-568h@2x.png in Resources */,
-				0247C43C176E02CF0029BA47 /* menu-bar.png in Resources */,
-				0247C43D176E02CF0029BA47 /* menu-bar@2x.png in Resources */,
 				0247C44B176E15C00029BA47 /* bg1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
