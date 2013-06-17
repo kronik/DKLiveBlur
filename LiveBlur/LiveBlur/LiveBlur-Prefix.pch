@@ -1,0 +1,57 @@
+//
+// Prefix header for all source files of the 'LiveBlur' target in the 'LiveBlur' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#define ApplicationDelegate                 ((BubblyAppDelegate *)[[UIApplication sharedApplication] delegate])
+#define UserDefaults                        [NSUserDefaults standardUserDefaults]
+#define SharedApplication                   [UIApplication sharedApplication]
+#define Bundle                              [NSBundle mainBundle]
+#define MainScreen                          [UIScreen mainScreen]
+#define ShowNetworkActivityIndicator()      [UIApplication sharedApplication].networkActivityIndicatorVisible = YES
+#define HideNetworkActivityIndicator()      [UIApplication sharedApplication].networkActivityIndicatorVisible = NO
+#define NetworkActivityIndicatorVisible(x)  [UIApplication sharedApplication].networkActivityIndicatorVisible = x
+#define NavBar                              self.navigationController.navigationBar
+#define TabBar                              self.tabBarController.tabBar
+#define NavBarHeight                        self.navigationController.navigationBar.bounds.size.height
+#define TabBarHeight                        self.tabBarController.tabBar.bounds.size.height
+#define ScreenRect                          [[UIScreen mainScreen] bounds]
+#define ScreenWidth                         [[UIScreen mainScreen] bounds].size.width
+#define ScreenHeight                        [[UIScreen mainScreen] bounds].size.height
+#define TouchHeightDefault                  44
+#define TouchHeightSmall                    32
+#define ViewWidth(v)                        v.frame.size.width
+#define ViewHeight(v)                       v.frame.size.height
+#define ViewX(v)                            v.frame.origin.x
+#define ViewY(v)                            v.frame.origin.y
+#define SelfViewHeight                      self.view.bounds.size.height
+#define RectX(f)                            f.origin.x
+#define RectY(f)                            f.origin.y
+#define RectWidth(f)                        f.size.width
+#define RectHeight(f)                       f.size.height
+#define RectSetWidth(f, w)                  CGRectMake(RectX(f), RectY(f), w, RectHeight(f))
+#define RectSetHeight(f, h)                 CGRectMake(RectX(f), RectY(f), RectWidth(f), h)
+#define RectSetX(f, x)                      CGRectMake(x, RectY(f), RectWidth(f), RectHeight(f))
+#define RectSetY(f, y)                      CGRectMake(RectX(f), y, RectWidth(f), RectHeight(f))
+#define RectSetSize(f, w, h)                CGRectMake(RectX(f), RectY(f), w, h)
+#define RectSetOrigin(f, x, y)              CGRectMake(x, y, RectWidth(f), RectHeight(f))
+#define Rect(x, y, w, h)                    CGRectMake(x, y, w, h)
+#define DATE_COMPONENTS                     NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+#define TIME_COMPONENTS                     NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
+#define FlushPool(p)                        [p drain]; p = [[NSAutoreleasePool alloc] init]
+#define RGB(r, g, b)                        [UIColor colorWithRed:(r)/255.f green:(g)/255.f blue:(b)/255.f alpha:1.f]
+#define RGBA(r, g, b, a)                    [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+
+#define StatusBarHeight                     [UIApplication sharedApplication].statusBarFrame.size.height
+#define DefaultToolbarHeight                self.navigationController.navigationBar.frame.size.height
+
