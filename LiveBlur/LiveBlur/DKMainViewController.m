@@ -112,6 +112,8 @@
         cell.textLabel.text = @"";
     }
     
+    cell.backgroundColor = [UIColor clearColor];
+    
     return cell;
 }
 

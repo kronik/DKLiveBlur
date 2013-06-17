@@ -50,7 +50,6 @@
         _backgroundGlassView.backgroundColor = kDKBlurredBackgroundDefaultGlassColor;
                 
         [self addSubview: _backgroundGlassView];
-
     }
     return self;
 }
@@ -147,7 +146,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             self.backgroundImageView.alpha = 0.0;
-            self.backgroundImageView.image = blurredImage;            
+            self.backgroundImageView.image = blurredImage;
         });
     });
     
