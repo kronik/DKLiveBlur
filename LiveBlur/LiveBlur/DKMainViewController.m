@@ -109,6 +109,7 @@
     if (indexPath.row > 1) {
         cell.textLabel.text = self.items[indexPath.row - 1];
     } else {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textLabel.text = @"";
     }
     
