@@ -41,6 +41,8 @@
         _backgroundImageView.alpha = 0.0;
         _backgroundImageView.contentMode = UIViewContentModeScaleToFill;
         _backgroundImageView.backgroundColor = [UIColor clearColor];
+        
+        _backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
 
         [self addSubview: _backgroundImageView];
         
@@ -48,6 +50,8 @@
         
         _backgroundGlassView.alpha = 0.0;
         _backgroundGlassView.backgroundColor = kDKBlurredBackgroundDefaultGlassColor;
+        
+        _backgroundGlassView.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
                 
         [self addSubview: _backgroundGlassView];
     }
@@ -87,7 +91,6 @@
     inBuffer.width = CGImageGetWidth(img);
     inBuffer.height = CGImageGetHeight(img);
     inBuffer.rowBytes = CGImageGetBytesPerRow(img);
-    
     inBuffer.data = (void*)CFDataGetBytePtr(inBitmapData);
     
     pixelBuffer = malloc(CGImageGetBytesPerRow(img) * CGImageGetHeight(img));
