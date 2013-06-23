@@ -73,7 +73,7 @@
     backgroundView.isGlassEffectOn = YES;
     
     self.tableView.backgroundView = backgroundView;
-    self.tableView.contentInset = UIEdgeInsetsMake(200.f, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(400, 0, 0, 0);
     
     [self.view addSubview: self.tableView];
 }
@@ -96,10 +96,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         
         cell.textLabel.textColor = [UIColor whiteColor];
+        cell.backgroundColor = [UIColor clearColor];
     }
     
     cell.textLabel.text = self.items[indexPath.row];
-    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
