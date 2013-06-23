@@ -157,7 +157,7 @@
                         change:(NSDictionary *)change context:(void *)context {
     
     // closer to zero, less blur applied
-    [self setBlurLevel:self.scrollView.contentOffset.y / (2 * CGRectGetHeight(self.frame) / 3)];
+    [self setBlurLevel:(self.scrollView.contentOffset.y + self.scrollView.contentInset.top) / (2 * CGRectGetHeight(self.bounds) / 3)];
 }
 
 - (void)setBlurLevel:(float)blurLevel
