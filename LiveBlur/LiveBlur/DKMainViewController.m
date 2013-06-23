@@ -56,9 +56,7 @@
     self.navigationItem.title = self.title;
     self.navigationController.navigationBar.translucent = YES;
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage: [UIImage imageNamed: kDKTableViewMainBackgroundImageFileName]];
-    
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)) style:UITableViewStylePlain];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.dataSource = self;
@@ -66,14 +64,16 @@
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.rowHeight = 50;
     
     DKLiveBlurView *backgroundView = [[DKLiveBlurView alloc] initWithFrame: self.view.bounds];
     
     backgroundView.originalImage = [UIImage imageNamed:@"bg1.jpg"];
-    backgroundView.tableView = self.tableView;
+    backgroundView.scrollView = self.tableView;
     backgroundView.isGlassEffectOn = YES;
     
     self.tableView.backgroundView = backgroundView;
+    self.tableView.contentInset = UIEdgeInsetsMake(200.f, 0, 0, 0);
     
     [self.view addSubview: self.tableView];
 }
@@ -83,17 +83,9 @@
     return 1;
 }
 
-- (float)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row > 1) {
-        return 50.0f;
-    } else {
-        return 200.0f;
-    }
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return self.items.count + 1;
+    return self.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -106,13 +98,7 @@
         cell.textLabel.textColor = [UIColor whiteColor];
     }
     
-    if (indexPath.row > 1) {
-        cell.textLabel.text = self.items[indexPath.row - 1];
-    } else {
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.textLabel.text = @"";
-    }
-    
+    cell.textLabel.text = self.items[indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
     
     return cell;
