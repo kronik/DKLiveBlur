@@ -20,7 +20,7 @@
 
 @synthesize originalImage = _originalImage;
 @synthesize backgroundImageView = _backgroundImageView;
-@synthesize tableView = _tableView;
+@synthesize scrollView = _scrollView;
 @synthesize initialBlurLevel = _initialBlurLevel;
 @synthesize backgroundGlassView = _backgroundGlassView;
 @synthesize initialGlassLevel = _initialGlassLevel;
@@ -63,12 +63,12 @@
     _backgroundGlassView.backgroundColor = glassColor;
 }
 
-- (void)setTableView:(UITableView *)tableView {
-    [_tableView removeObserver: self forKeyPath: @"contentOffset"];
+- (void)setScrollView:(UIScrollView *)scrollView {
+    [_scrollView removeObserver: self forKeyPath: @"contentOffset"];
     
-	_tableView = tableView;
+	_scrollView = scrollView;
 	
-    [_tableView addObserver: self forKeyPath: @"contentOffset" options: 0 context: nil];
+    [_scrollView addObserver: self forKeyPath: @"contentOffset" options: 0 context: nil];
 }
 
 - (UIImage *)blurryImage:(UIImage *)image withBlurLevel:(CGFloat)blur {
@@ -159,9 +159,15 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context {
     
-    self.backgroundImageView.alpha = self.tableView.contentOffset.y / (2 * self.frame.size.height / 3);
+    // closer to zero, less blur applied
+    [self setBlurLevel:(self.scrollView.contentOffset.y + self.scrollView.contentInset.top) / (2 * CGRectGetHeight(self.bounds) / 3)];
+}
+
+- (void)setBlurLevel:(float)blurLevel
+{
+    self.backgroundImageView.alpha = blurLevel;
     
-    if (self.isGlassEffectOn == YES) {
+    if (self.isGlassEffectOn) {
         self.backgroundGlassView.alpha = MAX(0.0, MIN(self.backgroundImageView.alpha - self.initialGlassLevel, self.initialGlassLevel));
     }
 }
