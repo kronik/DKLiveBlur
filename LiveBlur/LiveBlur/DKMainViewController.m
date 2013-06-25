@@ -10,6 +10,8 @@
 #import "DKLiveBlurView.h"
 
 #define kDKTableViewMainBackgroundImageFileName @"background.jpg"
+#define kDKTableViewDefaultCellHeight 50.0f
+#define kDKTableViewDefaultContentInset 400.0f
 
 @interface DKMainViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -64,7 +66,7 @@
     self.tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.tableView.separatorColor = [UIColor clearColor];
     self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.rowHeight = 50;
+    self.tableView.rowHeight = kDKTableViewDefaultCellHeight;
     
     DKLiveBlurView *backgroundView = [[DKLiveBlurView alloc] initWithFrame: self.view.bounds];
     
@@ -73,7 +75,7 @@
     backgroundView.isGlassEffectOn = YES;
     
     self.tableView.backgroundView = backgroundView;
-    self.tableView.contentInset = UIEdgeInsetsMake(400, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(kDKTableViewDefaultContentInset, 0, 0, 0);
     
     [self.view addSubview: self.tableView];
 }

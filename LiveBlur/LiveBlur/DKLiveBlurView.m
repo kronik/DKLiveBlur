@@ -163,8 +163,7 @@
     [self setBlurLevel:(self.scrollView.contentOffset.y + self.scrollView.contentInset.top) / (2 * CGRectGetHeight(self.bounds) / 3)];
 }
 
-- (void)setBlurLevel:(float)blurLevel
-{
+- (void)setBlurLevel:(float)blurLevel {
     self.backgroundImageView.alpha = blurLevel;
     
     if (self.isGlassEffectOn) {
