@@ -10,4 +10,4 @@ to yahoo weather iOS app.
 
 ##Usage
 Please check out the demo project included.
-![image](https://github.com/kronik/DKLiveBlur/master/example.gif)
+# ![Screenshot](https://raw.github.com/kronik/DKLiveBlur/master/example.gif)
