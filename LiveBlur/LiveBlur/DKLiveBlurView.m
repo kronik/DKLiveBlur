@@ -71,53 +71,52 @@
     [_scrollView addObserver: self forKeyPath: @"contentOffset" options: 0 context: nil];
 }
 
-- (UIImage *)blurryImage:(UIImage *)image withBlurLevel:(CGFloat)blur {
-    if ((blur < 0.0f) || (blur > 1.0f)) {
-        blur = 0.5f;
+- (UIImage *)applyBlurOnImage: (UIImage *)imageToBlur
+                   withRadius:(CGFloat)blurRadius {
+    if ((blurRadius < 0.0f) || (blurRadius > 1.0f)) {
+        blurRadius = 0.5f;
     }
     
-    int boxSize = (int)(blur * 100);
+    int boxSize = (int)(blurRadius * 100);
     boxSize -= (boxSize % 2) + 1;
     
-    CGImageRef img = image.CGImage;
+    CGImageRef rawImage = imageToBlur.CGImage;
     
     vImage_Buffer inBuffer, outBuffer;
     vImage_Error error;
     void *pixelBuffer;
     
-    CGDataProviderRef inProvider = CGImageGetDataProvider(img);
+    CGDataProviderRef inProvider = CGImageGetDataProvider(rawImage);
     CFDataRef inBitmapData = CGDataProviderCopyData(inProvider);
     
-    inBuffer.width = CGImageGetWidth(img);
-    inBuffer.height = CGImageGetHeight(img);
-    inBuffer.rowBytes = CGImageGetBytesPerRow(img);
+    inBuffer.width = CGImageGetWidth(rawImage);
+    inBuffer.height = CGImageGetHeight(rawImage);
+    inBuffer.rowBytes = CGImageGetBytesPerRow(rawImage);
     inBuffer.data = (void*)CFDataGetBytePtr(inBitmapData);
     
-    pixelBuffer = malloc(CGImageGetBytesPerRow(img) * CGImageGetHeight(img));
+    pixelBuffer = malloc(CGImageGetBytesPerRow(rawImage) * CGImageGetHeight(rawImage));
         
     outBuffer.data = pixelBuffer;
-    outBuffer.width = CGImageGetWidth(img);
-    outBuffer.height = CGImageGetHeight(img);
-    outBuffer.rowBytes = CGImageGetBytesPerRow(img);
+    outBuffer.width = CGImageGetWidth(rawImage);
+    outBuffer.height = CGImageGetHeight(rawImage);
+    outBuffer.rowBytes = CGImageGetBytesPerRow(rawImage);
     
     error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, NULL,
                                        0, 0, boxSize, boxSize, NULL,
                                        kvImageEdgeExtend);
-    
-    
     if (error) {
         NSLog(@"error from convolution %ld", error);
     }
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    CGContextRef ctx = CGBitmapContextCreate(
-                                             outBuffer.data,
+    
+    CGContextRef ctx = CGBitmapContextCreate(outBuffer.data,
                                              outBuffer.width,
                                              outBuffer.height,
                                              8,
                                              outBuffer.rowBytes,
                                              colorSpace,
-                                             CGImageGetBitmapInfo(image.CGImage));
+                                             CGImageGetBitmapInfo(imageToBlur.CGImage));
     
     CGImageRef imageRef = CGBitmapContextCreateImage (ctx);
     UIImage *returnImage = [UIImage imageWithCGImage:imageRef];
@@ -128,8 +127,6 @@
     
     free(pixelBuffer);
     CFRelease(inBitmapData);
-    
-    CGColorSpaceRelease(colorSpace);
     CGImageRelease(imageRef);
     
     return returnImage;
@@ -144,7 +141,7 @@
     
     dispatch_async(queue, ^ {
         
-        UIImage *blurredImage = [self blurryImage: self.originalImage withBlurLevel: self.initialBlurLevel];
+        UIImage *blurredImage = [self applyBlurOnImage: self.originalImage withRadius: self.initialBlurLevel];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
