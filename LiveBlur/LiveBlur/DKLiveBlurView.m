@@ -73,7 +73,7 @@
 
 - (UIImage *)applyBlurOnImage: (UIImage *)imageToBlur
                    withRadius:(CGFloat)blurRadius {
-    if ((blurRadius < 0.0f) || (blurRadius > 1.0f)) {
+    if ((blurRadius <= 0.0f) || (blurRadius > 1.0f)) {
         blurRadius = 0.5f;
     }
     
