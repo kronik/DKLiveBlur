@@ -4,10 +4,10 @@ DKLiveBlur
 Sources of DKLiveBlur and Demo app to show live blur effect similar 
 to yahoo weather iOS app.
 
-##Download
+## Download
     $ git clone https://github.com/kronik/DKLiveBlur.git
     $ cd DKLiveBlur/
 
-##Usage
+## Usage
 Please check out the demo project included.
 # ![Screenshot](https://raw.github.com/kronik/DKLiveBlur/master/example.gif)
